@@ -3,37 +3,24 @@ package br.com.quadrodehorarios.modelo;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Professor 
+public class Professor extends Usuario
 {
-	@Id @GeneratedValue private Long id;
-	private String nome;
+	private String nomeDoHorario;
 	private String situacao;
 	@ManyToMany private Collection<Aluno> alunos;
 	@ManyToMany private Collection<Sala> salas;
 	
-	public Long getId() 
+	public String getNomeDoHorario() 
 	{
-		return id;
+		return nomeDoHorario;
 	}
 	
-	public void setId(Long id) 
+	public void setNomeDoHorario( String nomeDoHorario ) 
 	{
-		this.id = id;
-	}
-	
-	public String getNome() 
-	{
-		return nome;
-	}
-	
-	public void setNome( String nome ) 
-	{
-		this.nome = nome;
+		this.nomeDoHorario = nomeDoHorario;
 	}
 	
 	public String getSituacao() 

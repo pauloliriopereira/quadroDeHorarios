@@ -1,15 +1,22 @@
 package br.com.quadrodehorarios.modelo;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 
 @Entity
+@Inheritance( strategy = InheritanceType.JOINED )
 public class Usuario 
 {
 	@Id @GeneratedValue private Long id;
 	private String nome;
 	private String senha;
+	@ManyToMany private Collection<Turno> turnos;
 	
 	public Long getId() 
 	{
