@@ -1,33 +1,23 @@
 package br.com.quadrodehorarios.modelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aluno extends Usuario
 {
-	private String turma;
-	@ManyToMany private Collection<Professor> professores;
-	
-	public String getTurma() 
+	@OneToMany private Collection<Turma> turmas = new ArrayList<Turma>();
+
+	public Collection<Turma> getTurmas() 
 	{
-		return turma;
+		return turmas;
 	}
-	
-	public void setTurma( String turma ) 
+
+	public void setTurmas( Collection<Turma> turmas ) 
 	{
-		this.turma = turma;
-	}
-	
-	public Collection<Professor> getProfessores() 
-	{
-		return professores;
-	}
-	
-	public void setProfessores( Collection<Professor> professores )
-	 {
-		this.professores = professores;
+		this.turmas = turmas;
 	}
 }

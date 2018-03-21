@@ -1,17 +1,17 @@
 package br.com.quadrodehorarios.modelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Professor extends Usuario
 {
-	private String nomeDoHorario;
-	private String situacao;
-	@ManyToMany private Collection<Aluno> alunos;
-	@ManyToMany private Collection<Sala> salas;
+	@Column( unique = true ) private String nomeDoHorario;
+	@OneToMany private Collection<Turma> turmas = new ArrayList<Turma>();
 	
 	public String getNomeDoHorario() 
 	{
@@ -23,33 +23,13 @@ public class Professor extends Usuario
 		this.nomeDoHorario = nomeDoHorario;
 	}
 	
-	public String getSituacao() 
+	public Collection<Turma> getTurmas() 
 	{
-		return situacao;
+		return turmas;
 	}
 	
-	public void setSituacao( String situacao ) 
+	public void setTurmas( Collection<Turma> turmas ) 
 	{
-		this.situacao = situacao;
-	}
-	
-	public Collection<Aluno> getAlunos()
-	{
-		return alunos;
-	}
-	
-	public void setAlunos( Collection<Aluno> alunos )
-	{
-		this.alunos = alunos;
-	}
-	
-	public Collection<Sala> getSalas() 
-	{
-		return salas;
-	}
-	
-	public void setSalas( Collection<Sala> salas ) 
-	{
-		this.salas = salas;
+		this.turmas = turmas;
 	}
 }

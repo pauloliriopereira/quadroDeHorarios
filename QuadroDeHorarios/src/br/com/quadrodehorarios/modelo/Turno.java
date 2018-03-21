@@ -1,18 +1,16 @@
 package br.com.quadrodehorarios.modelo;
 
-import java.util.Collection;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class Turno 
 {
-	@Id @GeneratedValue private Long id;
-	private String periodo;
-	@ManyToMany private Collection<Usuario> usuarios;
+	@Id @GeneratedValue( strategy = GenerationType.AUTO ) private Long id;
+	@Column( unique = true ) private String periodo;
 	
 	public Long getId() 
 	{
@@ -32,15 +30,5 @@ public class Turno
 	public void setPeriodo(String periodo) 
 	{
 		this.periodo = periodo;
-	}
-	
-	public Collection<Usuario> getUsuarios() 
-	{
-		return usuarios;
-	}
-	
-	public void setUsuarios( Collection<Usuario> usuarios ) 
-	{
-		this.usuarios = usuarios;
 	}
 }
